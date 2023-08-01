@@ -2,8 +2,7 @@
   "icons": {
     "expui": {
       "action": {
-        "send.svg": "icons/send.svg",
-        "support.svg": "icons/support.svg"
+        "send.svg": "icons/send.svg"
       },
       "toolWindow": {
         "toolWindow.svg": "icons/toolWindow.svg"

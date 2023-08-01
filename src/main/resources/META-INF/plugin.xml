@@ -1,51 +1,43 @@
 <idea-plugin>
-  <id>ChatGPT</id>
-  <name>ChatGPT</name>
-  <vendor email="wuzi@obiscr.com" url="https://obiscr.com">obiscr</vendor>
+  <id>CI&amp;T/Flow</id>
+  <name>CI&amp;T/Flow</name>
+  <vendor email="henriquegouveia@ciandt.com" url="https://ciandt.com">ciandt</vendor>
 
   <depends>com.intellij.modules.platform</depends>
   <depends>org.intellij.plugins.markdown</depends>
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <!--<depends>com.intellij.modules.platform</depends>-->
 
   <extensions defaultExtensionNs="com.intellij">
-    <toolWindow id="ChatGPT" anchor="right" icon="/icons/toolWindow.svg" canCloseContents="true"
-                factoryClass="com.obiscr.chatgpt.MyToolWindowFactory"/>
-    <applicationConfigurable parentId="tools" instance="com.obiscr.chatgpt.settings.OpenAISettingsPanel"
-                             id="com.obiscr.chatgpt.settings.OpenAISettings"
-                             displayName="OpenAI"/>
-<!--    <groupConfigurable id="com.obiscr.chatgpt.settings.OpenAISettings" weight="-10"-->
-<!--                       displayNameKey="OpenAI"-->
-<!--                       descriptionKey="Here are the relevant settings for OpenAI"/>-->
-    <applicationConfigurable parentId="com.obiscr.chatgpt.settings.OpenAISettings" instance="com.obiscr.chatgpt.settings.ChatGPTSettingsPanel"
-                             id="com.obiscr.chatgpt.settings.ChatGPT"
-                             displayName="ChatGPT"/>
-    <applicationConfigurable parentId="com.obiscr.chatgpt.settings.OpenAISettings" instance="com.obiscr.chatgpt.settings.GPT3_35_TurboPanel"
-                             id="com.obiscr.chatgpt.settings.GPT3-3.5-Turbo"
-                             displayName="GPT 3.5 Turbo"/>
-    <applicationConfigurable parentId="com.obiscr.chatgpt.settings.OpenAISettings" instance="com.obiscr.chatgpt.settings.CustomActionsPanel"
-                             id="com.obiscr.chatgpt.settings.commandActions"
+    <toolWindow id="CI&amp;T/Flow" anchor="right" icon="/icons/toolWindow.svg" canCloseContents="true"
+                factoryClass="com.ciandt.flow.MyToolWindowFactory"/>
+    <applicationConfigurable parentId="tools" instance="com.ciandt.flow.settings.OpenAISettingsPanel"
+                             id="com.ciandt.flow.settings.OpenAISettings"
+                             displayName="CI&amp;T/Flow"/>
+    <applicationConfigurable parentId="com.ciandt.flow.settings.OpenAISettings" instance="com.ciandt.flow.settings.GPT3_35_TurboPanel"
+                             id="com.ciandt.flow.settings.BeesAI"
+                             displayName="Configuration"/>
+    <applicationConfigurable parentId="com.ciandt.flow.settings.OpenAISettings" instance="com.ciandt.flow.settings.CustomActionsPanel"
+                             id="com.ciandt.flow.settings.commandActions"
                              displayName="Custom Prompt"/>
-    <applicationService serviceImplementation="com.obiscr.chatgpt.settings.OpenAISettingsState"/>
-    <applicationService serviceImplementation="com.obiscr.chatgpt.core.TokenManager"/>
-    <projectService serviceImplementation="com.obiscr.chatgpt.core.ConversationManager"/>
-    <projectService serviceImplementation="com.obiscr.chatgpt.core.SendAction"/>
-    <projectService serviceImplementation="com.obiscr.chatgpt.ChatGPTHandler"/>
-    <projectService serviceImplementation="com.obiscr.chatgpt.GPT35TurboHandler"/>
+    <applicationService serviceImplementation="com.ciandt.flow.settings.OpenAISettingsState"/>
+    <applicationService serviceImplementation="com.ciandt.flow.core.TokenManager"/>
+    <applicationService serviceImplementation="com.ciandt.flow.analytics.AnalyticsManager"/>
+    <projectService serviceImplementation="com.ciandt.flow.core.ConversationManager"/>
+    <projectService serviceImplementation="com.ciandt.flow.core.SendAction"/>
+    <projectService serviceImplementation="com.ciandt.flow.GPT35TurboHandler"/>
+    <projectService serviceImplementation="com.vladsch.flexmark.util.data.DataHolder"/>
     <iconMapper mappingFile="ChatGPTIconMappings.json"/>
   </extensions>
 
   <actions>
     <group id="ChatGPT" text="Search with ChatGPT" description="Search with ChatGPT">
       <action id="Prompt1Action" icon="/icons/toolWindow.svg"
-              class="com.obiscr.chatgpt.ui.action.editor.Prompt1Action"/>
-      <action id="Prompt2Action" class="com.obiscr.chatgpt.ui.action.editor.Prompt2Action"
+              class="com.ciandt.flow.ui.action.editor.Prompt1Action"/>
+      <action id="Prompt2Action" class="com.ciandt.flow.ui.action.editor.Prompt2Action"
               icon="/icons/toolWindow.svg" />
-      <action id="Prompt3Action" class="com.obiscr.chatgpt.ui.action.editor.Prompt3Action"
+      <action id="Prompt3Action" class="com.ciandt.flow.ui.action.editor.Prompt3Action"
               icon="/icons/toolWindow.svg" />
       <action id="CustomAction" icon="/icons/toolWindow.svg"
-              class="com.obiscr.chatgpt.ui.action.editor.CustomAction">
+              class="com.ciandt.flow.ui.action.editor.CustomAction">
         <keyboard-shortcut keymap="$default" first-keystroke="control shift Q"/>
       </action>
       <separator/>

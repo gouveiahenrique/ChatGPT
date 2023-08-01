@@ -10,7 +10,7 @@ plugins {
     // Kotlin support
     id("org.jetbrains.kotlin.jvm") version "1.7.22"
     // Gradle IntelliJ Plugin
-    id("org.jetbrains.intellij") version "1.13.2"
+    id("org.jetbrains.intellij") version "1.15.0"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "2.0.0"
     // Gradle Qodana Plugin
@@ -36,7 +36,9 @@ dependencies {
     implementation("com.obiscr:openai-auth:1.0.1")
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation("com.squareup.okhttp3:okhttp-sse:4.10.0")
-    implementation("com.vladsch.flexmark:flexmark:0.62.2")
+    implementation("com.vladsch.flexmark:flexmark-all:0.64.8")
+    implementation("com.obiscr:openai-auth:1.0.1")
+    implementation("com.segment.analytics.java:analytics:+")
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
